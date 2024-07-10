@@ -3,7 +3,7 @@
 }
 
 .incommin h2 {
-  color: #ffffff;
+  color: #000;
   font-weight: bolder;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .result {
-  color: #ffffff;
+  color: #000;
 }
 
 .taxes-row h2 {
@@ -35,7 +35,7 @@
 
 .taxes-row .col-6 {
   width: 40%;
-  color: #ffffff;
+  color: #000;
 }
 
 .result {
@@ -58,7 +58,7 @@
 }
 
 .remove-text-light {
-  color: #ffffff;
+  color: #000;
   font-weight: lighter;
   font-size: 1.4rem;
 }
@@ -76,7 +76,7 @@
 .my-form-control label {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #000;
 }
 
 .my-form-control input {
