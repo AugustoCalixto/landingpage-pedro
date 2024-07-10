@@ -1,15 +1,15 @@
 <div class="calc-container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <h1>Confira as taxas da ASTRO</h1>
       <p>As taxas são fixas e já incluem os custos com antecipação</p>
       <div class="my-form-control mb-4">
         <label for="faturamento">Qual o seu faturamento</label>
-        <input type="text" class="my-form-control" placeholder="Qual seu faturamento">
+        <input id="faturamento" type="number" class="my-form-control" placeholder="Qual seu faturamento">
       </div>
       <div class="my-form-control">
         <label for="parcelas">Quantas parcelas?</label>
-        <select class="form-select">
+        <select id="parcelas" class="form-select">
           <option value="1">1x</option>
           <option value="2">2x</option>
           <option value="3">3x</option>
@@ -33,11 +33,11 @@
         </select>
       </div>
       <div class="row taxes-row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <h3>Taxa <span class="highlight">ASTRO</span></h3>
           <h2>9,28%</h2>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <h3>Taxa Média dos concorrentes</h3>
           <h2>15,98%</h2>
         </div>
@@ -45,7 +45,7 @@
     </div>
 
 
-    <div class="col-6 result">
+    <div class="col-12 col-md-6 result">
       <div>
         <div class="incommin">
           <h3>Com a <span class="highlight">ASTRO</span> você vai receber</h3>
