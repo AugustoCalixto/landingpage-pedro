@@ -99,10 +99,10 @@
                                 </div>
                         </div>
                 </section>
-                <section class="background-black" id="counter" data-aos="fade-up" data-aos-duration="500"
-                        data-aos-easing="ease-out" data-aos-anchor-placement="top-bottom" data-astro-cid-jkzhulw5>
+                <section class="" id="counter" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-out"
+                        data-aos-anchor-placement="top-bottom" data-astro-cid-jkzhulw5>
                         <div class="container" data-astro-cid-jkzhulw5>
-                                <div class="row banner installments" data-aos="fade-up" data-aos-duration="500"
+                                <div class="row banner installments mb-4" data-aos="fade-up" data-aos-duration="500"
                                         data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom"
                                         data-aos-delay="500" data-astro-cid-jkzhulw5>
                                         <div class="col-lg-6 col-12 text-col" data-astro-cid-jkzhulw5>
@@ -149,7 +149,7 @@
                                                         <div class="my-form-control mb-4">
                                                                 <label for="faturamento">Qual o seu faturamento</label>
                                                                 <input id="faturamento" type="text"
-                                                                        class="my-form-control" value="R$ 1000,00">
+                                                                        class="my-form-control" value="R$ 00,00">
                                                         </div>
                                                         <div class="my-form-control">
                                                                 <label for="parcelas">Quantas parcelas?</label>
@@ -184,47 +184,42 @@
 
                                                 <div class="col-12 col-md-6 result">
                                                         <div>
-                                                                <div class="row">
-                                                                        <div class="col-4">
-                                                                                <button>Astro</button>
-                                                                        </div>
-                                                                        <div class="col-4">
-                                                                                <button>Órion</button>
-                                                                        </div>
-                                                                        <div class="col-4">
-                                                                                <button>Sírios</button>
-                                                                        </div>
+                                                        </div>
+                                                        <div class="incommin">
+                                                                <h3>Com a <span class="highlight">ASTRO</span>
+                                                                        você vai receber</h3>
+                                                                <h2 id="resultadoAstro">00,00</h2>
+                                                        </div>
+                                                        <div class="others-incommin">
+                                                                <h3>Com a concorrência você receberia</h3>
+                                                                <h2 id="resultadoConcorrencia">00,00</h2>
+                                                        </div>
+                                                        <div class="total-saved">
+                                                                <h3>Você vai economizar</h3>
+                                                                <h2 id="economia">00,00 <span
+                                                                                class="remove-highlight">com
+                                                                                a <span class="highlight">ASTRO</span>
+                                                                        </span></h2>
+                                                        </div>
+                                                        <div class="row plans">
+                                                                <div class="col-4">
+                                                                        <button id="astro-btn" class="active"
+                                                                                onclick="setAstro()">Astro</button>
                                                                 </div>
-                                                                <div class="incommin">
-                                                                        <h3>Com a <span class="highlight">ASTRO</span>
-                                                                                você vai receber</h3>
-                                                                        <h2 id="resultadoAstro">00,00</h2>
+                                                                <div class="col-4">
+                                                                        <button id="orion-btn"
+                                                                                onclick="setOrion()">Órion</button>
                                                                 </div>
-                                                                <div class="others-incommin">
-                                                                        <h3>Com a concorrência você receberia</h3>
-                                                                        <h2 id="resultadoConcorrencia">00,00</h2>
-                                                                </div>
-                                                                <div class="total-saved">
-                                                                        <h3>Você vai economizar</h3>
-                                                                        <h2 id="economia">00,00 <span
-                                                                                        class="remove-highlight">com
-                                                                                        a <span
-                                                                                                class="highlight">ASTRO</span>
-                                                                                </span></h2>
+                                                                <div class="col-4">
+                                                                        <button id="sirios-btn"
+                                                                                onclick="setSirios()">Sírios</button>
                                                                 </div>
                                                         </div>
-                                                        <div data-astro-cid-vw2lj5a7 class="mt-4"> <a
-                                                                        href="https://afiliados.sejaauros.com.br/checkout/5208eb30-f36d-431c-b36e-4c4813003fc4"
-                                                                        class="regular sm" target="_blank"
-                                                                        data-astro-cid-vnzlvqnm>Peça agora</a> </div>
+
                                                 </div>
                                                 <div class="banner fees" id="taxas" data-astro-cid-jkzhulw5>
                                                         <h1 data-astro-cid-jkzhulw5>Nossas Taxas</h1>
-                                                        <div class="fees-container" data-astro-cid-jkzhulw5> <a
-                                                                        href="https://afiliados.sejaauros.com.br/checkout/5208eb30-f36d-431c-b36e-4c4813003fc4"
-                                                                        class="regular" target="_blank"
-                                                                        data-astro-cid-vnzlvqnm>Peça
-                                                                        agora</a>
+                                                        <div class="fees-container" data-astro-cid-jkzhulw5>
                                                                 <div class="cards-row" data-astro-cid-jkzhulw5>
                                                                         <div data-aos="fade-up" data-aos-duration="750"
                                                                                 data-aos-easing="ease-out"
@@ -797,6 +792,9 @@
                                                                                 </div>
                                                                         </div>
                                                                 </div>
+                                                                <a href="https://afiliados.sejaauros.com.br/checkout/5208eb30-f36d-431c-b36e-4c4813003fc4"
+                                                                        class="regular" target="_blank">Peça
+                                                                        agora</a>
                                                         </div>
                                                 </div>
                                         </div>

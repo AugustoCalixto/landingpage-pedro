@@ -1,26 +1,90 @@
-const taxaAstro = 0.02; // Exemplo de taxa de 2%
-const taxaConcorrencia = 0.03; // Exemplo de taxa de 3%
+let TAXA_COMPARACAO = "astro";
+let QTD_PARCELAS = 1;
 
-const taxasParcelamento = {
-  1: 0.0472,
-  2: 0.0651,
-  3: 0.0750,
-  4: 0.0846,
-  5: 0.0940,
-  6: 0.1035,
-  7: 0.1141,
-  8: 0.1231,
-  9: 0.1320,
-  10: 0.1414,
-  11: 0.1505,
-  12: 0.1594,
-  13: 0.1682,
-  14: 0.1771,
-  15: 0.1860,
-  16: 0.1945,
-  17: 0.2034,
-  18: 0.2115
-};
+const taxasParcelamento = [
+  0,
+  0.0472,
+  0.0651,
+  0.0750,
+  0.0846,
+  0.0940,
+  0.1035,
+  0.1141,
+  0.1231,
+  0.1320,
+  0.1414,
+  0.1505,
+  0.1594,
+  0.1682,
+  0.1771,
+  0.1860,
+  0.1945,
+  0.2034,
+  0.2115
+];
+
+const taxaAstro = [
+  0,
+  0.0392,
+  0.0447,
+  0.0501,
+  0.0556,
+  0.0609,
+  0.0667,
+  0.0720,
+  0.0772,
+  0.0824,
+  0.0876,
+  0.0928,
+  0.0978,
+  0.1029,
+  0.1079,
+  0.1128,
+  0.1178,
+  0.1227
+];
+
+const taxaOrion = [
+  0,
+  0.0407,
+  0.0462,
+  0.0516,
+  0.0571,
+  0.0624,
+  0.0687,
+  0.0740,
+  0.0792,
+  0.0844,
+  0.0896,
+  0.0948,
+  0.0998,
+  0.1049,
+  0.1099,
+  0.1148,
+  0.1198,
+  0.1247
+];
+
+const taxaSirios = [
+  0,
+  0.0407,
+  0.0462,
+  0.0516,
+  0.0571,
+  0.0624,
+  0.0687,
+  0.0740,
+  0.0792,
+  0.0844,
+  0.0896,
+  0.0948,
+  0.0998,
+  0.1049,
+  0.1099,
+  0.1148,
+  0.1198,
+  0.1247
+];
 
 
 function formatarMoeda(valor) {
@@ -54,24 +118,34 @@ function calcular() {
   const faturamento = extrairValorComoFloat(document.getElementById('faturamento').value);
   const parcelamento = parseInt(document.getElementById('parcelas').value);
 
-
   if (isNaN(faturamento) || faturamento <= 0) {
     document.getElementById('resultadoAstro').innerText = 0;
     document.getElementById('resultadoConcorrencia').innerText = 0;
     document.getElementById('economia').innerText = 0;
   }
 
-  const taxaParcelamentoAstro = taxasParcelamento[parcelamento] || 0;
-  const taxaAstroTotal = taxaAstro + taxaParcelamentoAstro;
-  const taxaConcorrenciaTotal = taxaConcorrencia * parcelamento;
+  let meu_valor = 0;
+  let concorrente_valor = 0;
+  let economia = 0;
 
-  const recebimentoAstro = faturamento - (faturamento * taxaAstroTotal);
-  const recebimentoConcorrencia = faturamento - (faturamento * taxaConcorrenciaTotal);
-  const economia = recebimentoConcorrencia - recebimentoAstro;
+  if (TAXA_COMPARACAO === "astro") {
+    meu_valor = faturamento * taxaAstro[parcelamento];
+    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+  }
+  if (TAXA_COMPARACAO === "orion") {
+    meu_valor = faturamento * taxaOrion[parcelamento];
+    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+  }
+  if (TAXA_COMPARACAO === "sirios") {
+    meu_valor = faturamento * taxaSirios[parcelamento];
+    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+  }
 
-  document.getElementById('resultadoAstro').innerText = recebimentoAstro.toFixed(2);
-  document.getElementById('resultadoConcorrencia').innerText = recebimentoConcorrencia.toFixed(2);
-  document.getElementById('economia').innerText = economia.toFixed(2);
+  economia = concorrente_valor - meu_valor;
+
+  document.getElementById('resultadoAstro').innerText = formatarMoeda(meu_valor);
+  document.getElementById('resultadoConcorrencia').innerText = formatarMoeda(concorrente_valor);
+  document.getElementById('economia').innerText = formatarMoeda(economia);
 }
 
 
@@ -105,6 +179,32 @@ function handleFocus(event) {
 
 function handleBlur(event) {
   formatarInputParaMoeda(event);
+}
+
+function setAstro(el) {
+  document.querySelector('#astro-btn').classList.add('active');
+  document.querySelector('.plans button.active').classList.remove('active');
+  TAXA_COMPARACAO = "astro";
+  calcular();
+}
+
+function setOrion(el) {
+  document.querySelector('#orion-btn').classList.add('active');
+  document.querySelector('.plans button.active').classList.remove('active');
+  TAXA_COMPARACAO = "orion";
+  calcular();
+}
+
+function setSirios() {
+  document.querySelector('#sirios-btn').classList.add('active');
+  document.querySelector('.plans button.active').classList.remove('active');
+  TAXA_COMPARACAO = "sirios";
+  calcular();
+}
+
+function setParcelas() {
+  QTD_PARCELAS = document.getElementById('parcelas').value;
+  calcular();
 }
 
 const faturamento = document.getElementById('faturamento');
