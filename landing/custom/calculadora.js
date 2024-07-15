@@ -1,6 +1,5 @@
 let TAXA_COMPARACAO = "astro";
 let QTD_PARCELAS = 1;
-
 const taxasParcelamento = [
   0,
   0.0472,
@@ -131,14 +130,17 @@ function calcular() {
   if (TAXA_COMPARACAO === "astro") {
     meu_valor = faturamento * taxaAstro[parcelamento];
     concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaAstro[parcelamento]);
   }
   if (TAXA_COMPARACAO === "orion") {
     meu_valor = faturamento * taxaOrion[parcelamento];
     concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaOrion[parcelamento]);
   }
   if (TAXA_COMPARACAO === "sirios") {
     meu_valor = faturamento * taxaSirios[parcelamento];
     concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaSirios[parcelamento]);
   }
 
   economia = concorrente_valor - meu_valor;
@@ -182,22 +184,22 @@ function handleBlur(event) {
 }
 
 function setAstro(el) {
-  document.querySelector('#astro-btn').classList.add('active');
   document.querySelector('.plans button.active').classList.remove('active');
+  document.querySelector('#astro-btn').classList.add('active');
   TAXA_COMPARACAO = "astro";
   calcular();
 }
 
 function setOrion(el) {
-  document.querySelector('#orion-btn').classList.add('active');
   document.querySelector('.plans button.active').classList.remove('active');
+  document.querySelector('#orion-btn').classList.add('active');
   TAXA_COMPARACAO = "orion";
   calcular();
 }
 
 function setSirios() {
-  document.querySelector('#sirios-btn').classList.add('active');
   document.querySelector('.plans button.active').classList.remove('active');
+  document.querySelector('#sirios-btn').classList.add('active');
   TAXA_COMPARACAO = "sirios";
   calcular();
 }
@@ -205,6 +207,10 @@ function setSirios() {
 function setParcelas() {
   QTD_PARCELAS = document.getElementById('parcelas').value;
   calcular();
+}
+
+function transformarDecimalEmPorcentagem(decimal) {
+  return (decimal * 100).toFixed(2) + '%';
 }
 
 const faturamento = document.getElementById('faturamento');
