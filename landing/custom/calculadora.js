@@ -1,5 +1,6 @@
 let TAXA_COMPARACAO = "astro";
 let QTD_PARCELAS = 1;
+
 const taxasParcelamento = [
   0,
   0.0472,
@@ -128,22 +129,22 @@ function calcular() {
   let economia = 0;
 
   if (TAXA_COMPARACAO === "astro") {
-    meu_valor = faturamento * taxaAstro[parcelamento];
-    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    meu_valor = faturamento - faturamento * taxaAstro[parcelamento];
+    concorrente_valor = faturamento - faturamento * taxasParcelamento[parcelamento];
     document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaAstro[parcelamento]);
   }
   if (TAXA_COMPARACAO === "orion") {
-    meu_valor = faturamento * taxaOrion[parcelamento];
-    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    meu_valor = faturamento - faturamento * taxaAstro[parcelamento];
+    concorrente_valor = faturamento - faturamento * taxasParcelamento[parcelamento];
     document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaOrion[parcelamento]);
   }
   if (TAXA_COMPARACAO === "sirios") {
-    meu_valor = faturamento * taxaSirios[parcelamento];
-    concorrente_valor = faturamento * taxasParcelamento[parcelamento];
+    meu_valor = faturamento - faturamento * taxaAstro[parcelamento];
+    concorrente_valor = faturamento - faturamento * taxasParcelamento[parcelamento];
     document.querySelector('#taxa-astro-dinamica').innerText = transformarDecimalEmPorcentagem(taxaSirios[parcelamento]);
   }
 
-  economia = concorrente_valor - meu_valor;
+  economia = meu_valor - concorrente_valor;
 
   document.getElementById('resultadoAstro').innerText = formatarMoeda(meu_valor);
   document.getElementById('resultadoConcorrencia').innerText = formatarMoeda(concorrente_valor);
