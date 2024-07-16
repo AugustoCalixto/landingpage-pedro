@@ -1256,7 +1256,8 @@ ul[data-astro-cid-sysarr2n].infos li[data-astro-cid-sysarr2n] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem
+  gap: 1rem;
+  margin-top: -15px;
 }
 
 .equipment-container[data-astro-cid-sysarr2n] .equipment-card[data-astro-cid-sysarr2n] a[data-astro-cid-sysarr2n] {
