@@ -127,7 +127,7 @@ function calcular() {
   let meu_valor = 0;
   let concorrente_valor = 0;
   let economia = 0;
-
+  document.querySelector('#taxa-concorrente-dinamica').innerText = transformarDecimalEmPorcentagem(taxasParcelamento[parcelamento]);
   if (TAXA_COMPARACAO === "astro") {
     meu_valor = faturamento - faturamento * taxaAstro[parcelamento];
     concorrente_valor = faturamento - faturamento * taxasParcelamento[parcelamento];

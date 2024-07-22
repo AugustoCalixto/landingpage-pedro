@@ -12,6 +12,12 @@ a[data-astro-cid-vnzlvqnm] {
 
 }
 
+.cards-row h3 {
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
 a[data-astro-cid-vnzlvqnm].regular {
   animation: 1s pulse infinite ease-in-out;
   transition: 1s ease-out;
@@ -1316,9 +1322,6 @@ ul[data-astro-cid-sysarr2n].infos li[data-astro-cid-sysarr2n] {
   color: #3399CC;
 }
 
-.pos[data-astro-cid-sysarr2n].banner .title[data-astro-cid-sysarr2n] h3[data-astro-cid-sysarr2n] {
-  color: var(--color-white)
-}
 
 .text-col[data-astro-cid-sysarr2n] {
   display: flex;
@@ -1338,7 +1341,7 @@ ul[data-astro-cid-sysarr2n].infos li[data-astro-cid-sysarr2n] {
 }
 
 .color-text-white[data-astro-cid-sysarr2n] {
-  color: var(--color-white)
+  color: #333;
 }
 
 .color-text-gradient[data-astro-cid-sysarr2n] {
