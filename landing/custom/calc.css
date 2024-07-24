@@ -106,7 +106,8 @@
 .result button {
   padding: 10px;
   width: 100%;
-  background: linear-gradient(89.78deg, #f2c13b -1.71%, #f08f2e 74.67%);
+  background: transparent;
+  border: 2px solid #3399CC;
   border-radius: 5px;
   color: #000;
   font-size: 1.2rem;
@@ -115,5 +116,8 @@
 
 .result button.active {
   filter: brightness(1.2);
-  box-shadow: 0 0 10px 0 #a6a6a680;
+  border: 2px solid transparent;
+  background-color: #3399CC;
+  background: #3399CC;
+  color: #ffffff;
 }

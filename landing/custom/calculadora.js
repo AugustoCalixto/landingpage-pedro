@@ -23,68 +23,129 @@ const taxasParcelamento = [
   0.2115
 ];
 
-const taxaAstro = [
-  0,
-  0.0392,
-  0.0447,
-  0.0501,
-  0.0556,
-  0.0609,
-  0.0667,
-  0.0720,
-  0.0772,
-  0.0824,
-  0.0876,
-  0.0928,
-  0.0978,
-  0.1029,
-  0.1079,
-  0.1128,
-  0.1178,
-  0.1227
-];
+const taxaAstro = [1.39, 3.51, 4.31, 4.90, 5.49, 6.08, 6.66, 7.74, 8.31, 8.88, 9.45, 10.00, 10.55, 11.11, 11.65, 12.19, 12.72, 13.26, 13.79].map(val => val / 100);
 
 const taxaOrion = [
-  0,
-  0.0407,
-  0.0462,
-  0.0516,
-  0.0571,
-  0.0624,
-  0.0687,
-  0.0740,
-  0.0792,
-  0.0844,
-  0.0896,
-  0.0948,
-  0.0998,
-  0.1049,
-  0.1099,
-  0.1148,
-  0.1198,
-  0.1247
+  1.3, 0.032, 0.0453, 0.0505, 0.0557, 0.0608, 0.0659, 0.0765, 0.0814, 0.0865, 0.0914, 0.0963, 0.1012, 0.1061, 0.1109, 0.1156, 0.1204, 0.1251, 0.1298
 ];
 
-const taxaSirios = [
-  0,
-  0.0407,
-  0.0462,
-  0.0516,
-  0.0571,
-  0.0624,
-  0.0687,
-  0.0740,
-  0.0792,
-  0.0844,
-  0.0896,
-  0.0948,
-  0.0998,
-  0.1049,
-  0.1099,
-  0.1148,
-  0.1198,
-  0.1247
-];
+const taxaSirios = [0.0139, 0.0296, 0.0392, 0.0447, 0.0501, 0.0556, 0.0609, 0.0667, 0.0720, 0.0772, 0.0824, 0.0876, 0.0928, 0.0978, 0.1029, 0.1079, 0.1128, 0.1178, 0.1227];
+
+// PLANOS DE PARCELAMENTO
+const ORION = {
+  a: [
+    1.39, 3.20, 4.53, 5.05, 5.57, 6.08, 6.59, 7.65, 8.14, 8.65, 9.14, 9.63, 10.12, 10.61, 11.09, 11.56, 12.04, 12.51, 12.98
+  ],
+  b: [
+    1.45, 3.49, 4.68, 5.20, 5.72, 6.23, 6.74, 7.95, 8.44, 8.95, 9.44, 9.93, 10.42, 10.91, 11.39, 11.86, 12.34, 12.81, 13.28
+  ],
+  c: [
+    1.60, 3.49, 4.68, 5.20, 5.72, 6.23, 6.74, 7.95, 8.44, 8.95, 9.44, 9.93, 10.42, 10.91, 11.39, 11.86, 12.34, 12.81, 13.28
+  ]
+}
+
+const ASTRO = {
+  a: [
+    1.39, 3.51, 4.31, 4.90, 5.49, 6.08, 6.66, 7.74, 8.31, 8.88, 9.45, 10.00, 10.55, 11.11, 11.65, 12.19, 12.72, 13.26, 13.79
+  ],
+  b: [
+    1.60, 3.65, 5.07, 5.66, 5.49, 6.84, 7.42, 8.29, 8.86, 9.43, 10.00, 10.55, 11.10, 11.66, 12.20, 12.74, 13.27, 13.26, 14.34
+  ],
+  c: [
+    1.60, 3.65, 5.07, 5.66, 5.49, 6.84, 7.42, 8.29, 8.86, 9.43, 10.00, 10.55, 11.10, 11.66, 12.20, 12.74, 13.27, 13.26, 14.34
+  ]
+}
+
+const SIRIOS = {
+  a: [
+    1.39, 2.96, 3.92, 4.47, 5.01, 5.56, 6.09, 6.67, 7.20, 7.72, 8.24, 8.76, 9.28, 9.78, 10.29, 10.79, 11.28, 11.78, 12.27
+  ],
+  b: [
+    1.45, 3.29, 4.07, 4.62, 5.16, 5.71, 6.24, 6.87, 7.40, 7.92, 8.44, 8.96, 9.48, 9.98, 10.49, 10.99, 11.48, 11.98, 12.47
+  ],
+  c: [
+    1.79, 3.29, 4.07, 4.62, 5.16, 5.71, 6.24, 6.87, 7.40, 7.92, 8.44, 8.96, 9.48, 9.98, 10.49, 10.99, 11.48, 11.98, 12.47
+  ]
+}
+
+
+function showTaxes(plan) {
+  const feeCard = document.querySelector('.cards-row');
+  const feeValues = [];
+
+  if (feeCard) {
+    const feeListItemsA = feeCard.querySelectorAll('#card_1 ul li');
+    const feeListItemsB = feeCard.querySelectorAll('#card_2 ul li');
+    const feeListItemsC = feeCard.querySelectorAll('#card_3 ul li');
+
+    // add active on clicked h3
+    const feeTabs = document.querySelectorAll('.cards-row h3');
+    feeTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        feeTabs.forEach((tab) => tab.classList.remove('active'));
+        tab.classList.add('active');
+        feeCard.querySelectorAll('.card').forEach((card) => card.classList.remove('active'));
+        feeCard.querySelectorAll('.card')[index].classList.add('active');
+      })
+    });
+
+    // show values on list
+    if (plan == 1) {
+      feeListItemsA.forEach((item, index) => {
+        const val = ASTRO.a[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      });
+      feeListItemsB.forEach((item, index) => {
+        const val = ASTRO.b[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+      feeListItemsC.forEach((item, index) => {
+        const val = ASTRO.c[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+    }
+
+    if (plan == 2) {
+      feeListItemsA.forEach((item, index) => {
+        const val = ORION.a[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      });
+      feeListItemsB.forEach((item, index) => {
+        const val = ORION.b[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+      feeListItemsC.forEach((item, index) => {
+        const val = ORION.c[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+    }
+
+    if (plan == 3) {
+      feeListItemsA.forEach((item, index) => {
+        const val = SIRIOS.a[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      });
+      feeListItemsB.forEach((item, index) => {
+        const val = SIRIOS.b[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+      feeListItemsC.forEach((item, index) => {
+        const val = SIRIOS.c[index].toString().replace('.', ',');
+        item.querySelector('.value').innerHTML = `${val}%`;
+      }
+      );
+    }
+  }
+
+  console.log(feeValues);
+}
+
+showTaxes(1);
 
 
 function formatarMoeda(valor) {

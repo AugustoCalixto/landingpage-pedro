@@ -1322,6 +1322,21 @@ ul[data-astro-cid-sysarr2n].infos li[data-astro-cid-sysarr2n] {
   color: #3399CC;
 }
 
+.cards-row h3 {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #3399CC;
+}
+
+.cards-row h3.active {
+  border: 2px solid transparent;
+  background-color: #3399CC;
+  background: #3399CC;
+  color: #ffffff;
+}
+
 
 .text-col[data-astro-cid-sysarr2n] {
   display: flex;
